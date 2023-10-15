@@ -1,0 +1,44 @@
+body {
+    background-color: #F7E9B9;
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    font-family: Montserrat;
+    
+}
+.sunnyStyling {
+    background-color: #F7E9B9;
+    color: #2A5510;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+.today {
+    display: flex;
+    flex-direction: column;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 40px;
+    gap: 3px;
+}
+
+h1 {
+    font-family: Montserrat;
+    font-size: 37px;
+    font-style: bold;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.forecast div {
+   border-bottom: 1px dashed;
+   display: flex;
+   justify-content: space-between;
+}
+
+.sunnyImg {
+    content: url('design/design2/icons/noun_Sunglasses_2055147.svg');
+}
