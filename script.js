@@ -37,7 +37,7 @@ const fetchForecast = () => {
             const weather = item[1]
             const temps = weather.map((value) => value.main.temp)
             const maxTemp = Math.max(...temps)
-            const roundedTemp = Math.round(maxTemp);
+            const roundedTemp = Math.round(maxTemp * 10) / 10;
             const day = getDays(date);
 
             forecast.innerHTML += `
