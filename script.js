@@ -10,6 +10,8 @@ const sunset = document.getElementById("sunset");
 const forecast = document.getElementById("forecast");
 const temp = document.getElementById("tempToday")
 const forecastToday = document.getElementById("forecastToday");
+const title = document.getElementById("title");
+const imageIcon = document.getElementById("icon");
 
 const fetchForecast = () => {
   fetch(forecasturl)
@@ -39,6 +41,7 @@ const fetchForecast = () => {
             const maxTemp = Math.max(...temps)
             const roundedTemp = Math.round(maxTemp * 10) / 10;
             const day = getDays(date);
+            console.log(weather.map((value) => value.weather));
 
             forecast.innerHTML += `
                 <div>
@@ -58,8 +61,32 @@ const fetchWeather = () => {
     })
     .then((data) => {
       temp.innerText += Math.round(data.main.temp) + " °C";
-      forecastToday.innerHTML += data.weather[0].description;
-    });
+      const today = data.weather[0].description;
+      forecastToday.innerHTML += today;
+
+      if(today === 'clear sky') {
+      title.innerHTML += `
+        <h1>Today we have a ${today}, enjoy your day</h1>
+      `;
+      imageIcon.classList.add("sunnyImg");
+      }
+       else if(today === 'light rain') {
+        title.innerHTML += `
+        <h1>Todays forecast is ${today}, don't forget your umbrella</h1>
+      `;
+      imageIcon.classList.add("cloudyImg");
+      } else if(today === 'clear') {
+        title.innerHTML += `
+        <h1> Get your sunnies on. Stockholm is looking rather ${today} today.</h1>
+      `;
+      imageIcon.classList.add("sunnyImg");
+      } else {
+        title.innerHTML += `
+        <h1> Todays forecast is ${today}. Enjoy your day!</h1>
+      `;
+      imageIcon.classList.add("cloudyImg");
+      }
+    });  
 };
 
 let dates = {}

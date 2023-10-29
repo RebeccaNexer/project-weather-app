@@ -1,14 +1,13 @@
 body {
-    background-color: #F7E9B9;
+    background-color: #F4F7F8;
     display: flex;
     flex-direction: column;
     margin: 40px;
     font-family: Montserrat;
     
 }
-.sunnyStyling {
-    background-color: #F7E9B9;
-    color: #2A5510;
+.cloudyStyling {
+    color: #F47775;
 }
 .container {
     max-width: 600px;
@@ -41,4 +40,8 @@ h1 {
 
 .sunnyImg {
     content: url('design/design2/icons/noun_Sunglasses_2055147.svg');
+}
+
+.cloudyImg {
+    content: url('design/design2/icons/noun_Cloud_1188486.svg');
 }
