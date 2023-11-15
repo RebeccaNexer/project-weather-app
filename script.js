@@ -63,8 +63,6 @@ const fetchWeather = () => {
       temp.innerText += Math.round(data.main.temp) + " °C";
       const today = data.weather[0].description;
       forecastToday.innerHTML += today;
-      console.log(today);
-      console.log(data.weather[0].description);
 
       if(today === 'clear sky') {
       title.innerHTML += `
