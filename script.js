@@ -63,6 +63,8 @@ const fetchWeather = () => {
       temp.innerText += Math.round(data.main.temp) + " °C";
       const today = data.weather[0].description;
       forecastToday.innerHTML += today;
+      console.log(today);
+      console.log(data.weather[0].description);
 
       if(today === 'clear sky') {
       title.innerHTML += `
@@ -80,6 +82,21 @@ const fetchWeather = () => {
         <h1> Get your sunnies on. Stockholm is looking rather ${today} today.</h1>
       `;
       imageIcon.classList.add("sunnyImg");
+      } else if (today === 'overcast clouds') {
+        title.innerHTML += `
+        <h1>Stockholm is covered with ${today} and looking gloomy today.</h1>
+      `;
+      imageIcon.classList.add("cloudyImg");
+      } else if (today === 'scattered clouds') {
+        title.innerHTML += `
+        <h1>Stockholm is covered with ${today} and looking gloomy today.</h1>
+      `;
+      imageIcon.classList.add("cloudyImg");
+      } else if(today === 'broken clouds') {
+        title.innerHTML += `
+        <h1>Stockholm is covered with ${today} and looking gloomy today.</h1>
+      `;
+      imageIcon.classList.add("cloudyImg");
       } else {
         title.innerHTML += `
         <h1> Todays forecast is ${today}. Enjoy your day!</h1>
