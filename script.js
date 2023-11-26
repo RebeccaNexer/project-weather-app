@@ -19,11 +19,7 @@ const fetchForecast = () => {
       return response.json();
     })
     .then((data) => {
-      const sr = new Date(data.city.sunrise).toLocaleTimeString("sv-SE", {hour: '2-digit', minute:'2-digit'});
-      const ss = new Date(data.city.sunset).toLocaleTimeString("sv-SE", {hour: '2-digit', minute:'2-digit'});
 
-      sunrise.innerText += `sunrise ${sr}`;
-      sunset.innerText += `sunset ${ss}`;
       if(data.list) {
           data.list.forEach((weather) => {
             const date = weather.dt_txt.split(' ')[0]
@@ -53,6 +49,23 @@ const fetchForecast = () => {
         }
       })
     };
+
+
+    const fetchSunriseSunset = async () => {
+      try {
+        const todaysResponse = await fetch(weatherurl);
+        const todaysData = await todaysResponse.json();
+        sunrise.innerHTML = new Date(
+          todaysData.sys.sunrise * 1000
+        ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        sunset.innerHTML = new Date(
+          todaysData.sys.sunset * 1000
+        ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+          } catch (error) {
+        console.error(error);
+      }
+    };
+    
 
 const fetchWeather = () => {
   fetch(weatherurl)
@@ -115,3 +128,4 @@ const getDays = (date) => {
 
 fetchWeather();
 fetchForecast();
+fetchSunriseSunset();
